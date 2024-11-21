@@ -2,7 +2,7 @@
 requires = [
     "setuptools >= 42",
     "wheel",
-    "pybind11 ~= 2.12",
+    "pybind11 == 2.13.6",
 ]
 build-backend = "setuptools.build_meta"
 
@@ -18,9 +18,21 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
 ]
+dependencies = [
+    "amulet-compiler-target == 1.0"
+]
 
 [tool.setuptools]
 include-package-data = false
+
+[tool.setuptools.package-data]
+"*" = [
+    "**/*.hpp",
+    "**/*.dll",
+    "**/*.so",
+    "**/*.dylib",
+    "**/*.lib",
+]
 
 [tool.setuptools.dynamic]
 version = {attr = "amulet_test1.__version__"}
