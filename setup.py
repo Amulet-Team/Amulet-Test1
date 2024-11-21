@@ -20,8 +20,18 @@ class CMakeBuild(build_ext):
         ext_fullpath = Path.cwd() / self.get_ext_fullpath("")
         src_dir = ext_fullpath.parent.resolve()
 
+        platform_args = []
+        if sys.platform == "win32":
+            platform_args.extend(["-G", "Visual Studio 17 2022"])
+            if sys.maxsize > 2**32:
+                platform_args.extend(["-A", "x64"])
+            else:
+                platform_args.extend(["-A", "Win32"])
+            platform_args.extend(["-T", "v143"])
+
         subprocess.run([
             "cmake",
+            *platform_args,
             f"-DPYTHON_EXECUTABLE={sys.executable}",
             f"-Dpybind11_DIR={pybind11.get_cmake_dir().replace(os.sep, '/')}",
             f"-DCMAKE_INSTALL_PREFIX=install",
