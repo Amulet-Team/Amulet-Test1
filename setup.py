@@ -2,7 +2,7 @@ import os
 import subprocess
 import sys
 from pathlib import Path
-import glob
+import pybind11
 
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
@@ -23,6 +23,7 @@ class CMakeBuild(build_ext):
         subprocess.run([
             "cmake",
             f"-DPYTHON_EXECUTABLE={sys.executable}",
+            f"-Dpybind11_DIR={pybind11.get_cmake_dir().replace(os.sep, '/')}",
             f"-DCMAKE_INSTALL_PREFIX=install",
             f'-DSRC_INSTALL_DIR={src_dir}',
             '-B', 'build',

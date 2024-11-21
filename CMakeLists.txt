@@ -9,7 +9,6 @@ if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_EXTENSIONS OFF)
 endif(NOT CMAKE_CXX_STANDARD)
 
-add_definitions(-DPYBIND11_DETAILED_ERROR_MESSAGES)
 if (WIN32)
 	# set windows 7 as the minimum version
 	add_definitions(-D_WIN32_WINNT=0x0601)
@@ -17,10 +16,9 @@ elseif(APPLE)
     set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15")
 endif()
 
-# Add pybind11 fallback
-if (NOT TARGET pybind11::headers)
-    add_subdirectory(submodules/pybind11)
-endif()
+# Add pybind11
+add_definitions(-DPYBIND11_DETAILED_ERROR_MESSAGES)
+find_package(pybind11 CONFIG REQUIRED)
 
 add_library(amulet_test1 SHARED)
 target_compile_definitions(amulet_test1 PRIVATE ExportAmuletTest1)
