@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 project(amulet_test1 LANGUAGES CXX)
-set(SRC_INSTALL_DIR "." CACHE PATH "The path to the amulet package to install into.")
+set(SRC_INSTALL_DIR "." CACHE PATH "The path to the src directory to install into.")
 
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 20)
