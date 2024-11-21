@@ -30,11 +30,6 @@ class CMakeBuild(build_ext):
         subprocess.run(["cmake", "--build", "build", "--config", "Release"])
         subprocess.run(["cmake", "--install", "build", "--config", "Release"])
 
-        # Remove compile-time files
-        for ext in ["*.lib"]:
-            for path in glob.glob(os.path.join(glob.escape(src_dir), "**", ext), recursive=True):
-                os.remove(path)
-
 
 setup(
     cmdclass={"build_ext": CMakeBuild},
