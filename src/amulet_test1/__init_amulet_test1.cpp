@@ -8,6 +8,6 @@ static void init_module(py::module m){
     m.def("test1_2", &Amulet::test1_2);
 }
 
-PYBIND11_MODULE(_ext, m) {
+PYBIND11_MODULE(_amulet_test1, m) {
     m.def("init", &init_module);
 }

@@ -27,8 +27,8 @@ target_compile_definitions(amulet_test1 PRIVATE ExportAmuletTest1)
 target_include_directories(amulet_test1 PUBLIC src)
 target_sources(amulet_test1 PRIVATE src/amulet_test1/test1.cpp)
 
-pybind11_add_module(_ext src/amulet_test1/__init_amulet_test1.cpp)
-target_link_libraries( _ext PRIVATE amulet_test1 )
+pybind11_add_module(_amulet_test1 src/amulet_test1/__init_amulet_test1.cpp)
+target_link_libraries( _amulet_test1 PRIVATE amulet_test1 )
 
 install(TARGETS amulet_test1 DESTINATION "${SRC_INSTALL_DIR}/amulet_test1/bin")
-install(TARGETS _ext DESTINATION "${SRC_INSTALL_DIR}/amulet_test1")
+install(TARGETS _amulet_test1 DESTINATION "${SRC_INSTALL_DIR}/amulet_test1")

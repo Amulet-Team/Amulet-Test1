@@ -16,7 +16,7 @@ def _init() -> None:
                 os.environ.get("LD_LIBRARY_PATH", "") + os.pathsep + path
         )
 
-    from ._ext import init
+    from ._amulet_test1 import init
     init(sys.modules[__name__])
 
 _init()

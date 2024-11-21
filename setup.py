@@ -38,5 +38,5 @@ class CMakeBuild(build_ext):
 
 setup(
     cmdclass={"build_ext": CMakeBuild},
-    ext_modules=[CMakeExtension("amulet_test1._ext")],
+    ext_modules=[CMakeExtension("amulet_test1._amulet_test1")],
 )
