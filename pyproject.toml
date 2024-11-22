@@ -27,6 +27,7 @@ include-package-data = false
 
 [tool.setuptools.package-data]
 "*" = [
+    "*Config.cmake",
     "**/*.hpp",
     "**/*.dll",
     "**/*.so",
